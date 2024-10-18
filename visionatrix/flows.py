@@ -392,9 +392,10 @@ def flow_prepare_output_params(
         ):
             continue
         if r_node["class_type"] != "SaveImage":
-            raise RuntimeError(
-                f"class_type={r_node['class_type']}: only `SaveImage` nodes are supported currently as output node"
-            )
+            continue
+            # raise RuntimeError(
+            #     f"class_type={r_node['class_type']}: only `SaveImage` nodes are supported currently as output node"
+            # )
         r_node["inputs"]["filename_prefix"] = f"{task_id}_{param}"
         task_details["outputs"].append(
             {"comfy_node_id": int(param), "type": "image", "file_size": -1, "batch_size": -1}
